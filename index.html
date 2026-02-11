@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verðmatstól Íslandshótela</title>
+    <title>Íslandshótel</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -72,10 +72,6 @@
                 <h1 class="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">Íslandshótel - Kaup á hlut S38</h1>
                 <p class="text-slate-500 text-sm mt-1">Gagnvirkt líkan byggt á lykiltölum og markaðssamanburði</p>
             </div>
-            <button onclick="copyToClipboard()" class="flex items-center gap-2 bg-white hover:bg-slate-50 text-slate-700 font-medium py-2.5 px-5 rounded-lg border border-slate-200 shadow-sm transition-all text-sm group">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 group-hover:text-blue-600 transition-colors"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                <span>Afrita gögn í Excel</span>
-            </button>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -377,57 +373,6 @@
             
             const dilutionPct = (dilution * 100).toFixed(1).replace('.', ',');
             document.getElementById('dilutionEffect').innerText = `Þynningaráhrif: ${dilutionPct}% (aukning hlutafjár)`;
-        }
-
-        function copyToClipboard() {
-            let tableText = "Félag\tGeiri\tEV/EBITDA\tV/I (P/B)\n";
-            
-            const ihMult = document.getElementById('ihMultiple').innerText;
-            const ihPB = document.getElementById('ihPB').innerText;
-            const price = document.getElementById('sharePrice').value;
-            
-            tableText += `Íslandshótel (${price} ISK/hlut)\tHótel / Fasteignir\t${ihMult}\t${ihPB}\n`;
-            tableText += `Reitir fasteignafélag\tFasteignafélög\t~16,5x\t~1,16x\n`;
-            tableText += `Heimar hf.\tFasteignafélög\t~18,1x\t~0,97x\n`;
-            tableText += `Eik fasteignafélag\tFasteignafélög\t~16,7x\t~0,88x\n\n`;
-
-            const reitirMCap = document.getElementById('reitirMarketCap').innerText;
-            const s38Val = document.getElementById('s38Value').innerText;
-            const newShares = document.getElementById('newSharesRequired').innerText;
-            const reitirPrice = document.getElementById('reitirPrice').value;
-
-            tableText += `YFIRTÖKUSVIÐSMYND (S38 24,2% Hlutur)\n`;
-            tableText += `Markaðsvirði Reita (Fyrir)\t${reitirMCap}\n`;
-            tableText += `Virði hlutar S38\t${s38Val}\n`;
-            tableText += `Gengi Reita\t${reitirPrice}\n`;
-            tableText += `Nýir hlutir (útgáfa)\t${newShares} m.hluta`;
-
-            const textArea = document.createElement("textarea");
-            textArea.value = tableText;
-            
-            textArea.style.position = "fixed";
-            textArea.style.left = "-9999px";
-            textArea.style.top = "0";
-            document.body.appendChild(textArea);
-            
-            textArea.focus();
-            textArea.select();
-            
-            try {
-                const successful = document.execCommand('copy');
-                if (successful) {
-                    const btn = document.querySelector('button');
-                    const originalText = btn.innerHTML;
-                    btn.innerHTML = `<span class="text-green-600 font-bold">Afritað!</span>`;
-                    setTimeout(() => {
-                        btn.innerHTML = originalText;
-                    }, 2000);
-                }
-            } catch (err) {
-                console.error('Unable to copy', err);
-            }
-            
-            document.body.removeChild(textArea);
         }
 
         // Initial run
