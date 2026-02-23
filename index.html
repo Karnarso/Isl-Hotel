@@ -65,19 +65,19 @@
 </head>
 <body class="p-4 md:p-8 min-h-screen">
 
-    <div class="max-w-6xl mx-auto">
+    <div class="max-w-7xl mx-auto">
         <!-- Header -->
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
             <div>
-                <h1 class="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">Íslandshótel - Reitir</h1>
+                <h1 class="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">Reitir - Íslandshótel</h1>
                 <p class="text-slate-500 text-sm mt-1">Gagnvirkt líkan byggt á lykiltölum og markaðssamanburði</p>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="grid grid-cols-1 xl:grid-cols-12 gap-6">
             
             <!-- LEFT COLUMN: INPUTS -->
-            <div class="lg:col-span-4 space-y-6">
+            <div class="xl:col-span-4 space-y-6">
                 
                 <!-- Forsendur -->
                 <div class="card">
@@ -99,14 +99,14 @@
                             <div class="mb-4">
                                 <label class="input-label text-blue-700" for="sharePrice">Gengi hlutabréfa (ISK)</label>
                                 <div class="relative">
-                                    <input type="number" id="sharePrice" class="input-field border-blue-200 bg-white font-bold text-blue-900" value="52.65" step="0.1" oninput="updateFromPrice()">
+                                    <input type="number" id="sharePrice" class="input-field border-blue-200 bg-white font-bold text-blue-900" value="43.88" step="0.1" oninput="updateFromPrice()">
                                     <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-slate-400 text-xs">ISK</div>
                                 </div>
                             </div>
 
                             <div>
                                 <label class="input-label text-blue-700" for="marketCapInput">Markaðsvirði hlutafjár (m.kr.)</label>
-                                <input type="number" id="marketCapInput" class="input-field border-blue-200 bg-white font-bold text-blue-900" value="30000" step="100" oninput="updateFromCap()">
+                                <input type="number" id="marketCapInput" class="input-field border-blue-200 bg-white font-bold text-blue-900" value="25000" step="100" oninput="updateFromCap()">
                                 <p class="text-[10px] text-slate-500 mt-1.5 flex items-center gap-1">
                                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                     Breyttu þessum reit til að reikna gengi
@@ -161,7 +161,7 @@
             </div>
 
             <!-- RIGHT COLUMN: OUTPUTS -->
-            <div class="lg:col-span-8 space-y-6">
+            <div class="xl:col-span-8 space-y-6">
                 
                 <!-- Bridge -->
                 <div class="card">
@@ -175,7 +175,7 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 text-sm divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
                             <div class="p-5 flex justify-between items-center group hover:bg-slate-50 transition-colors">
                                 <span class="text-slate-600 font-medium">Markaðsvirði hlutafjár</span>
-                                <span class="metric-value text-slate-800 text-lg" id="dispEquity">30.000</span>
+                                <span class="metric-value text-slate-800 text-lg" id="dispEquity">25.000</span>
                             </div>
                             <div class="p-5 flex justify-between items-center group hover:bg-slate-50 transition-colors">
                                 <span class="text-slate-500 font-medium">+ Nettó skuldir</span>
@@ -187,7 +187,7 @@
                             </div>
                             <div class="p-5 flex justify-between items-center bg-slate-50/50">
                                 <span class="text-slate-900 font-bold uppercase tracking-wide">Heildarvirði (EV)</span>
-                                <span class="metric-value text-blue-700 text-xl font-bold" id="dispEV">60.500</span>
+                                <span class="metric-value text-blue-700 text-xl font-bold" id="dispEV">55.500</span>
                             </div>
                         </div>
                     </div>
@@ -200,7 +200,7 @@
                             <span class="w-1.5 h-5 bg-indigo-500 rounded-full"></span>
                             3. Markaðssamanburður
                         </h2>
-                        <span class="text-[10px] uppercase font-bold tracking-wider text-slate-400 border border-slate-200 px-2 py-1 rounded">2026 Spá</span>
+                        <span class="text-[10px] uppercase font-bold tracking-wider text-slate-400 border border-slate-200 px-2 py-1 rounded">2026 Spá / Keldan</span>
                     </div>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left valuation-table">
@@ -219,20 +219,20 @@
                                         Íslandshótel
                                     </td>
                                     <td class="text-blue-600 text-xs uppercase font-semibold tracking-wide">Hótel / Fasteignir</td>
-                                    <td class="text-right font-bold text-blue-800 metric-value text-base" id="ihMultiple">15,1x</td>
-                                    <td class="text-right font-bold text-blue-800 metric-value text-base" id="ihPB">1,17x</td>
+                                    <td class="text-right font-bold text-blue-800 metric-value text-base" id="ihMultiple">13,9x</td>
+                                    <td class="text-right font-bold text-blue-800 metric-value text-base" id="ihPB">0,97x</td>
                                 </tr>
                                 <tr>
                                     <td class="font-medium">Reitir fasteignafélag</td>
                                     <td class="text-slate-500 text-xs">Fasteignafélög</td>
                                     <td class="text-right metric-value">~16,5x</td>
-                                    <td class="text-right metric-value">~1,16x</td>
+                                    <td class="text-right metric-value">~1,11x</td>
                                 </tr>
                                 <tr>
                                     <td class="font-medium">Heimar hf.</td>
                                     <td class="text-slate-500 text-xs">Fasteignafélög</td>
                                     <td class="text-right metric-value">~18,1x</td>
-                                    <td class="text-right metric-value">~0,97x</td>
+                                    <td class="text-right metric-value">~0,92x</td>
                                 </tr>
                                 <tr>
                                     <td class="font-medium">Eik fasteignafélag</td>
@@ -265,42 +265,74 @@
                                     </div>
                                     <div>
                                         <label class="input-label" for="reitirShares">Útistandandi hlutir (m)</label>
-                                        <input type="number" id="reitirShares" class="input-field bg-white" value="688" oninput="calculate()">
+                                        <input type="number" id="reitirShares" class="input-field bg-white" value="697" oninput="calculate()">
+                                        <p class="text-[10px] text-slate-400 mt-1">Stilling miðuð við 130,6m hjá Gildi (18,74%)</p>
                                     </div>
                                     <div class="pt-2 border-t border-slate-100 flex justify-between items-center">
                                         <span class="text-xs text-slate-500 font-medium">Markaðsvirði Reita:</span>
-                                        <span class="text-sm font-bold text-slate-700" id="reitirMarketCap">87.376 m.kr.</span>
+                                        <span class="text-sm font-bold text-slate-700" id="reitirMarketCap">88.519 m.kr.</span>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Results Box -->
                             <div class="bg-blue-50 border border-blue-100 rounded-lg p-5">
-                                <h3 class="text-xs font-bold text-blue-400 uppercase tracking-widest mb-4">Niðurstaða Viðskipta (24,2% hlutur)</h3>
+                                <h3 class="text-xs font-bold text-blue-400 uppercase tracking-widest mb-4">Niðurstaða Viðskipta (24,2% hlutur í ÍH)</h3>
                                 
                                 <div class="space-y-4">
                                     <div class="flex justify-between items-baseline">
                                         <span class="text-sm text-slate-600">Kaupverð S38 hlutar</span>
-                                        <span class="text-lg font-bold text-slate-800 metric-value" id="s38Value">7.260 m.kr.</span>
+                                        <span class="text-lg font-bold text-slate-800 metric-value" id="s38Value">6.050 m.kr.</span>
                                     </div>
 
                                     <div class="w-full h-px bg-blue-200 my-2"></div>
 
                                     <div>
-                                        <span class="text-sm font-semibold text-blue-800 block mb-1">Ný útgáfa hlutabréfa</span>
+                                        <span class="text-sm font-semibold text-blue-800 block mb-1">Ný útgáfa hlutabréfa Reita</span>
                                         <div class="flex items-baseline gap-2">
-                                            <span class="text-3xl font-bold text-blue-700 metric-value" id="newSharesRequired">57,2</span>
+                                            <span class="text-3xl font-bold text-blue-700 metric-value" id="newSharesRequired">47,6</span>
                                             <span class="text-sm text-blue-600 font-medium">milljónir hluta</span>
                                         </div>
                                     </div>
 
                                     <div class="bg-white/60 rounded px-3 py-2 text-xs text-blue-900 border border-blue-100 flex items-center gap-2">
                                         <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-                                        <span id="dilutionEffect">Þynning: 8,3%</span>
+                                        <span id="dilutionEffect">Þynning: 6,8%</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- S38 Shareholders Table -->
+                <div class="card">
+                    <div class="card-header flex justify-between items-center">
+                        <h2 class="section-title">
+                            <span class="w-1.5 h-5 bg-purple-500 rounded-full"></span>
+                            5. Hluthafar S38 og Nýtt Eignarhald í Reitum
+                        </h2>
+                    </div>
+                    <div class="p-4 bg-slate-50 border-b border-slate-200 text-sm text-slate-600">
+                        Þessi hluti reiknar út dreifingu nýju hlutanna (sbr. kafla 4) til hluthafa S38 og leggur þá við fyrri eign þeirra í Reitum. Miðar við innslátt á <strong>Markaðsvirði hlutafjár ÍH</strong> úr kafla 1.
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left valuation-table">
+                            <thead>
+                                <tr>
+                                    <th>Hluthafi S38</th>
+                                    <th class="text-right" title="Hlutdeild í heildarhlutafé Íslandshótela">% í ÍH</th>
+                                    <th class="text-right" title="Hlutfall innan S38 félagsins (Bundið við 24,2%)">% innan S38</th>
+                                    <th class="text-right bg-blue-50/50">Nýir Hlutir (m)</th>
+                                    <th class="text-right">Fyrri Hlutir (m)</th>
+                                    <th class="text-right bg-slate-50">Samtals Hlutir (m)</th>
+                                    <th class="text-right bg-blue-50 font-bold text-blue-800">Nýtt Eignarhald (%)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="s38ShareholdersTable">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 
@@ -313,9 +345,23 @@
             return new Intl.NumberFormat('is-IS').format(num);
         }
         
-        function formatDecimal(num) {
-             return num.toFixed(2).replace('.', ',');
+        function formatDecimal(num, decimals = 2) {
+             return num.toFixed(decimals).replace('.', ',');
         }
+
+        // Data array from the PDF document
+        const s38Data = [
+            { name: "Gildi lsj", pctIH: 5.91, reitirPre: 130.61 },
+            { name: "Stapi lsj", pctIH: 5.22, reitirPre: 0 },
+            { name: "Birta lsj", pctIH: 3.21, reitirPre: 31.88 },
+            { name: "LIVE", pctIH: 2.93, reitirPre: 76.68 },
+            { name: "Frjálsi lsj", pctIH: 1.31, reitirPre: 21.08 },
+            { name: "LSR", pctIH: 1.25, reitirPre: 58.62 },
+            { name: "Lífeyrisauki", pctIH: 0.35, reitirPre: 0 },
+            { name: "Lsj bænda", pctIH: 0.33, reitirPre: 0 },
+            { name: "Lsj bankamanna", pctIH: 0.33, reitirPre: 0 },
+            { name: "Aðrir", pctIH: 3.36, reitirPre: 0 }
+        ];
 
         function updateFromPrice() {
             const shares = parseFloat(document.getElementById('shareCount').value) || 0;
@@ -353,15 +399,15 @@
             document.getElementById('dispAdj').innerText = formatNumber(adj);
             document.getElementById('dispEV').innerText = formatNumber(ev.toFixed(0));
             
-            document.getElementById('ihMultiple').innerText = multiple.toFixed(1).replace('.', ',') + 'x';
-            document.getElementById('ihPB').innerText = pbRatio.toFixed(2).replace('.', ',') + 'x';
+            document.getElementById('ihMultiple').innerText = formatDecimal(multiple, 1) + 'x';
+            document.getElementById('ihPB').innerText = formatDecimal(pbRatio, 2) + 'x';
 
             // Acquisition Logic
-            const s38StakePct = 0.242; 
+            const s38StakePct = 0.242; // 24.2% based on PDF
             const s38Value = equity * s38StakePct;
 
             const reitirPrice = parseFloat(document.getElementById('reitirPrice').value) || 127;
-            const reitirExistingShares = parseFloat(document.getElementById('reitirShares').value) || 688;
+            const reitirExistingShares = parseFloat(document.getElementById('reitirShares').value) || 697;
 
             const reitirMCap = reitirPrice * reitirExistingShares;
             const newSharesNeeded = s38Value / reitirPrice;
@@ -369,10 +415,50 @@
 
             document.getElementById('reitirMarketCap').innerText = formatNumber(reitirMCap.toFixed(0)) + " m.kr.";
             document.getElementById('s38Value').innerText = formatNumber(s38Value.toFixed(0)) + " m.kr.";
-            document.getElementById('newSharesRequired').innerText = formatDecimal(newSharesNeeded);
+            document.getElementById('newSharesRequired').innerText = formatDecimal(newSharesNeeded, 1);
             
             const dilutionPct = (dilution * 100).toFixed(1).replace('.', ',');
-            document.getElementById('dilutionEffect').innerText = `Þynningaráhrif: ${dilutionPct}% (aukning hlutafjár)`;
+            document.getElementById('dilutionEffect').innerText = `Þynning: ${dilutionPct}% (aukning hlutafjár)`;
+
+            // Section 5: S38 Shareholder Math
+            const totalReitirPost = reitirExistingShares + newSharesNeeded;
+            let tbodyHTML = "";
+
+            // Reikna gildi fyrir hvern hluthafa og setja í nýtt fylki (array)
+            const processedData = s38Data.map(sh => {
+                const shareInS38 = sh.pctIH / 24.20; 
+                const newReitirShares = shareInS38 * newSharesNeeded;
+                const totalSharesPost = sh.reitirPre + newReitirShares;
+                const pctPost = (totalSharesPost / totalReitirPost) * 100;
+                
+                return {
+                    ...sh,
+                    shareInS38,
+                    newReitirShares,
+                    totalSharesPost,
+                    pctPost
+                };
+            });
+
+            // Raða fylkinu eftir nýju eignarhaldi (pctPost) frá því stærsta til minnsta
+            processedData.sort((a, b) => b.pctPost - a.pctPost);
+
+            // Búa til HTML töfluna úr röðuðum gögnum
+            processedData.forEach(sh => {
+                tbodyHTML += `
+                    <tr>
+                        <td class="font-medium">${sh.name}</td>
+                        <td class="text-right metric-value">${formatDecimal(sh.pctIH, 2)}%</td>
+                        <td class="text-right metric-value">${formatDecimal(sh.shareInS38 * 100, 1)}%</td>
+                        <td class="text-right metric-value text-blue-600 bg-blue-50/30">+${formatDecimal(sh.newReitirShares, 2)}</td>
+                        <td class="text-right metric-value text-slate-500">${sh.reitirPre > 0 ? formatDecimal(sh.reitirPre, 2) : '-'}</td>
+                        <td class="text-right metric-value bg-slate-50 font-semibold">${formatDecimal(sh.totalSharesPost, 2)}</td>
+                        <td class="text-right metric-value bg-blue-50/50 font-bold text-blue-700">${formatDecimal(sh.pctPost, 2)}%</td>
+                    </tr>
+                `;
+            });
+            
+            document.getElementById('s38ShareholdersTable').innerHTML = tbodyHTML;
         }
 
         // Initial run
