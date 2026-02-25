@@ -15,6 +15,16 @@
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
+        /* Hide spin buttons in number inputs */
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
         .input-label { display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b; margin-bottom: 0.35rem; }
         .input-field { 
             width: 100%; 
@@ -72,6 +82,15 @@
                 <h1 class="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">Reitir - Íslandshótel</h1>
                 <p class="text-slate-500 text-sm mt-1">Gagnvirkt líkan byggt á áætlunum og markaðssamanburði</p>
             </div>
+            <div class="flex flex-col items-center">
+                <div class="text-xl md:text-2xl tracking-widest uppercase">
+                    <span class="text-blue-900 font-black">XAX</span>
+                    <span class="text-slate-400 font-semibold ml-1.5">ADVISORS</span>
+                </div>
+                <div class="text-rose-600 font-bold uppercase tracking-widest text-[11px] md:text-xs mt-1">
+                    - Trúnaðarmál -
+                </div>
+            </div>
         </div>
 
         <div class="grid grid-cols-1 xl:grid-cols-12 gap-6">
@@ -84,7 +103,7 @@
                     <div class="card-header">
                         <h2 class="section-title">
                             <span class="w-1.5 h-5 bg-blue-600 rounded-full"></span>
-                            1. Forsendur Verðmats Íslandshótela
+                            1. Forsendur Verðmats ÍH
                         </h2>
                     </div>
                     <div class="card-body space-y-5">
@@ -149,9 +168,17 @@
                             </div>
 
                             <div>
-                                <label class="input-label" for="netProfit">Hagnaður 2026</label>
+                                <label class="input-label" for="netProfit2025">Hagnaður 2025 (Síðasta árs)</label>
                                 <div class="relative">
-                                    <input type="number" id="netProfit" class="input-field" value="1500" oninput="calculate()">
+                                    <input type="number" id="netProfit2025" class="input-field" value="1500" oninput="calculate()">
+                                    <span class="absolute right-3 top-2.5 text-xs text-slate-400">m.kr.</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="input-label" for="netProfit">Hagnaður 2026 (Spá)</label>
+                                <div class="relative">
+                                    <input type="number" id="netProfit" class="input-field" value="1600" oninput="calculate()">
                                     <span class="absolute right-3 top-2.5 text-xs text-slate-400">m.kr.</span>
                                 </div>
                             </div>
@@ -201,7 +228,10 @@
                             <span class="w-1.5 h-5 bg-indigo-500 rounded-full"></span>
                             3. Markaðssamanburður
                         </h2>
-                        <span class="text-[10px] uppercase font-bold tracking-wider text-slate-400 border border-slate-200 px-2 py-1 rounded">2026 Spá / Keldan</span>
+                        <span class="text-[10px] uppercase font-bold tracking-wider text-slate-400 border border-slate-200 px-2 py-1 rounded">2026 Spá / Keldan (Breytanlegt)</span>
+                    </div>
+                    <div class="p-4 bg-indigo-50/50 border-b border-slate-100 text-xs text-indigo-700">
+                        Smelltu á kennitölurnar hjá fasteignafélögunum hér að neðan til að uppfæra þær beint m.v. Kelduna í dag.
                     </div>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left valuation-table">
@@ -209,8 +239,9 @@
                                 <tr>
                                     <th>Félag</th>
                                     <th>Geiri</th>
-                                    <th class="text-right">EV / EBITDA</th>
-                                    <th class="text-right">V / I (P/B)</th>
+                                    <th class="text-right" title="Heildarvirði / EBITDA">EV / EBITDA</th>
+                                    <th class="text-right" title="Markaðsvirði / Hagnaður síðasta árs">V / H</th>
+                                    <th class="text-right" title="Markaðsvirði / Bókfært eigið fé">V / I (P/B)</th>
                                 </tr>
                             </thead>
                             <tbody id="valuationTable">
@@ -221,25 +252,60 @@
                                     </td>
                                     <td class="text-blue-600 text-xs uppercase font-semibold tracking-wide">Hótel / Fasteignir</td>
                                     <td class="text-right font-bold text-blue-800 metric-value text-base" id="ihMultiple">13,9x</td>
-                                    <td class="text-right font-bold text-blue-800 metric-value text-base" id="ihPB">0,97x</td>
+                                    <td class="text-right font-bold text-slate-400 metric-value text-base">-</td>
+                                    <td class="text-right font-bold text-blue-800 metric-value text-base" id="ihPB" title="25.000 / 25.746">0,97x</td>
                                 </tr>
                                 <tr>
                                     <td class="font-medium">Reitir fasteignafélag</td>
                                     <td class="text-slate-500 text-xs">Fasteignafélög</td>
-                                    <td class="text-right metric-value">~16,5x</td>
-                                    <td class="text-right metric-value">~1,11x</td>
+                                    <td class="text-right metric-value">
+                                        <div class="flex items-center justify-end"><input type="number" value="16.5" step="0.1" class="w-14 text-right bg-transparent hover:bg-slate-200 focus:bg-white border border-transparent focus:border-indigo-300 rounded outline-none p-1 transition-all"><span>x</span></div>
+                                    </td>
+                                    <td class="text-right metric-value">
+                                        <div class="flex items-center justify-end"><input type="number" value="8.09" step="0.01" class="w-16 text-right bg-transparent hover:bg-slate-200 focus:bg-white border border-transparent focus:border-indigo-300 rounded outline-none p-1 transition-all"></div>
+                                    </td>
+                                    <td class="text-right metric-value">
+                                        <div class="flex items-center justify-end text-indigo-700 font-bold"><input type="number" id="syncReitirPB" value="1.11" step="0.01" oninput="syncPB('syncReitirPB')" class="w-14 text-right bg-transparent hover:bg-indigo-100 focus:bg-white border border-transparent focus:border-indigo-300 rounded outline-none p-1 transition-all"><span>x</span></div>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td class="font-medium">Heimar hf.</td>
                                     <td class="text-slate-500 text-xs">Fasteignafélög</td>
-                                    <td class="text-right metric-value">~18,1x</td>
-                                    <td class="text-right metric-value">~0,92x</td>
+                                    <td class="text-right metric-value">
+                                        <div class="flex items-center justify-end"><input type="number" value="18.1" step="0.1" class="w-14 text-right bg-transparent hover:bg-slate-200 focus:bg-white border border-transparent focus:border-indigo-300 rounded outline-none p-1 transition-all"><span>x</span></div>
+                                    </td>
+                                    <td class="text-right metric-value">
+                                        <div class="flex items-center justify-end"><input type="number" value="8.70" step="0.01" class="w-16 text-right bg-transparent hover:bg-slate-200 focus:bg-white border border-transparent focus:border-indigo-300 rounded outline-none p-1 transition-all"></div>
+                                    </td>
+                                    <td class="text-right metric-value">
+                                        <div class="flex items-center justify-end"><input type="number" value="0.92" step="0.01" class="w-14 text-right bg-transparent hover:bg-slate-200 focus:bg-white border border-transparent focus:border-indigo-300 rounded outline-none p-1 transition-all"><span>x</span></div>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td class="font-medium">Eik fasteignafélag</td>
                                     <td class="text-slate-500 text-xs">Fasteignafélög</td>
-                                    <td class="text-right metric-value">~16,7x</td>
-                                    <td class="text-right metric-value">~0,88x</td>
+                                    <td class="text-right metric-value">
+                                        <div class="flex items-center justify-end"><input type="number" value="16.7" step="0.1" class="w-14 text-right bg-transparent hover:bg-slate-200 focus:bg-white border border-transparent focus:border-indigo-300 rounded outline-none p-1 transition-all"><span>x</span></div>
+                                    </td>
+                                    <td class="text-right metric-value">
+                                        <div class="flex items-center justify-end"><input type="number" value="8.83" step="0.01" class="w-16 text-right bg-transparent hover:bg-slate-200 focus:bg-white border border-transparent focus:border-indigo-300 rounded outline-none p-1 transition-all"></div>
+                                    </td>
+                                    <td class="text-right metric-value">
+                                        <div class="flex items-center justify-end"><input type="number" value="0.88" step="0.01" class="w-14 text-right bg-transparent hover:bg-slate-200 focus:bg-white border border-transparent focus:border-indigo-300 rounded outline-none p-1 transition-all"><span>x</span></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="font-medium">Kaldalón hf.</td>
+                                    <td class="text-slate-500 text-xs">Fasteignafélög</td>
+                                    <td class="text-right metric-value">
+                                        <div class="flex items-center justify-end"><input type="number" value="15.0" step="0.1" class="w-14 text-right bg-transparent hover:bg-slate-200 focus:bg-white border border-transparent focus:border-indigo-300 rounded outline-none p-1 transition-all"><span>x</span></div>
+                                    </td>
+                                    <td class="text-right metric-value">
+                                        <div class="flex items-center justify-end"><input type="number" value="10.88" step="0.01" class="w-16 text-right bg-transparent hover:bg-slate-200 focus:bg-white border border-transparent focus:border-indigo-300 rounded outline-none p-1 transition-all"></div>
+                                    </td>
+                                    <td class="text-right metric-value">
+                                        <div class="flex items-center justify-end"><input type="number" value="1.05" step="0.01" class="w-14 text-right bg-transparent hover:bg-slate-200 focus:bg-white border border-transparent focus:border-indigo-300 rounded outline-none p-1 transition-all"><span>x</span></div>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -251,7 +317,7 @@
                     <div class="card-header border-b border-slate-200">
                         <h2 class="section-title text-slate-800">
                             <span class="w-1.5 h-5 bg-slate-600 rounded-full"></span>
-                            4. Yfirtökusviðsmynd (S38)
+                            4. Reitir kaupir S38 - greiðir með útgáfu nýrra hlutabréfa
                         </h2>
                     </div>
                     <div class="card-body">
@@ -322,7 +388,7 @@
                         <div class="flex justify-between items-center text-sm">
                             <span class="text-indigo-700">V/I (P/B) margfaldari Reita</span>
                             <div class="flex items-center gap-2">
-                               <input type="number" id="reitirPBInput" value="1.11" step="0.01" class="input-field py-1 px-2 w-20 text-right text-sm border-indigo-200 focus:border-indigo-400" oninput="calculate()">
+                               <input type="number" id="reitirPBInput" value="1.11" step="0.01" class="input-field py-1 px-2 w-20 text-right text-sm border-indigo-200 focus:border-indigo-400" oninput="syncPB('reitirPBInput')">
                                <span class="text-indigo-900 font-semibold">x</span>
                             </div>
                         </div>
@@ -423,6 +489,16 @@
             calculate();
         }
 
+        function syncPB(sourceId) {
+            const val = document.getElementById(sourceId).value;
+            if(sourceId === 'syncReitirPB') {
+                document.getElementById('reitirPBInput').value = val;
+            } else {
+                document.getElementById('syncReitirPB').value = val;
+            }
+            calculate();
+        }
+
         function calculate() {
             // Main Valuation
             const equity = parseFloat(document.getElementById('marketCapInput').value) || 0;
@@ -430,10 +506,14 @@
             const adj = parseFloat(document.getElementById('otherAdj').value) || 0;
             const ebitda = parseFloat(document.getElementById('ebitda').value) || 1; 
             const bookEquity = parseFloat(document.getElementById('bookEquity').value) || 1;
+            const netProfit2025 = parseFloat(document.getElementById('netProfit2025').value) || 1;
 
             const ev = equity + debt + adj;
             const multiple = ev / ebitda;
             const pbRatio = equity / bookEquity;
+            
+            // Reikna V/H m.v. hagnað 2025 (síðasta árs)
+            const peRatio = equity / netProfit2025;
 
             document.getElementById('dispEquity').innerText = formatNumber(equity.toFixed(0));
             document.getElementById('dispDebt').innerText = formatNumber(debt);
@@ -441,6 +521,7 @@
             document.getElementById('dispEV').innerText = formatNumber(ev.toFixed(0));
             
             document.getElementById('ihMultiple').innerText = formatDecimal(multiple, 1) + 'x';
+            
             document.getElementById('ihPB').innerText = formatDecimal(pbRatio, 2) + 'x';
 
             // New P/B Deal Value Logic
